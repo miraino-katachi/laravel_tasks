@@ -8,6 +8,7 @@ Laravel 5.5で動作確認しています。
 下記のコードを編集します。
 
 ### App\Http\Controllers\Auth\LoginController
+```
     // protected $redirectTo = '/home';
     protected $redirectTo = '/task';    // リダイレクト先を変更
 
@@ -17,11 +18,14 @@ Laravel 5.5で動作確認しています。
         $this->guard()->logout();
         return redirect('/login');    // リダイレクト先を変更
     }
-
+```
 ### App\Http\Controllers\Auth\RegisterController
+```
     // protected $redirectTo = '/home';
     protected $redirectTo = '/task';
-
+```
 ### App\Http\Middleware\RedirectIfAuthenticated
-    // return redirect('/home');
+```
+// return redirect('/home');
     return redirect('/task');    // リダイレクト先を変更
+```
