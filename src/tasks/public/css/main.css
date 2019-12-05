@@ -28,10 +28,32 @@ p.error {
     width: 200px;
 }
 
+.search {
+    text-align: right;
+    margin: 5px;
+    padding: 0;
+}
+
+.search input[type="text"] {
+    display: inline-block;
+    width: 200px;
+    padding-right: 40px;
+}
+
+.search input[type="submit"] {
+    display: inline-block;
+    background-color: inherit;
+    margin-left: -40px;
+}
+
 table.list, table.form {
-    margin: 20px auto 20px auto;
+    margin: 5px auto;
     border-spacing: 1px;
     border-collapse: separate;
+}
+
+table.list {
+    width: 100%;
 }
 
 table.list tr:nth-child(odd) {

@@ -36,3 +36,9 @@ Route::post('/task/del', 'TaskController@remove')->middleware('auth');
 
 /** 完了 */
 Route::get('/task/complete', 'TaskController@complete')->middleware('auth');
+
+/** 検索 */
+Route::post('/task/search', 'TaskController@search')->middleware('auth');
+Route::get('/task/search', function () {
+    return redirect('/task');
+});

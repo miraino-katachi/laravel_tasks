@@ -21,7 +21,7 @@
                     @if ($errors->has('expire_date'))
                         <p class="warning">{{ $errors->first('expire_date') }}</p>
                     @endif
-                    <input type="date" name="expire_date" class="form-control expire-date" value="{{ old('expire_date') }}">
+                    <input type="date" name="expire_date" class="form-control expire-date" value="{{ date('Y-m-d') }}">
                 </td>
             </tr>
             <tr>

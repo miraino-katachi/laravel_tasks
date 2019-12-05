@@ -19,9 +19,12 @@ class TaskController extends Controller
     {
         // レコード抽出、ペジネーションで10件ずつ表示
         $tasks = Task::with('user')
-                ->orderBy('expire_date', 'asc')
-                ->paginate(10);
-        $data = ['tasks' => $tasks];
+            ->orderBy('expire_date', 'asc')
+            ->paginate(10);
+        $data = [
+            'tasks' => $tasks,
+            'search' => '',
+        ];
         return view('task.index', $data);
     }
 
@@ -87,8 +90,8 @@ class TaskController extends Controller
     {
         // 該当のIDでログインユーザーのTaskを検索
         $task = Task::where('id', $request->id)
-                ->where('user_id', Auth::user()->id)
-                ->first();
+            ->where('user_id', Auth::user()->id)
+            ->first();
 
         if (is_null($task)) {
             // レコードが無いときは、一覧ページにリダイレクト
@@ -113,8 +116,8 @@ class TaskController extends Controller
 
         // 該当のID、ログインユーザーのIDのレコードを検索
         $task = Task::where('id', $request->id)
-                ->where('user_id', Auth::user()->id)
-                ->first();
+            ->where('user_id', Auth::user()->id)
+            ->first();
 
         if (is_null($task)) {
             // 該当レコードが存在しないときは、一覧ページへリダイレクト
@@ -149,8 +152,8 @@ class TaskController extends Controller
     {
         // 該当のIDでログインユーザーのTaskを検索
         $task = Task::where('id', $request->id)
-                ->where('user_id', Auth::user()->id)
-                ->first();
+            ->where('user_id', Auth::user()->id)
+            ->first();
 
         if (is_null($task)) {
             // レコードが無いときは、一覧ページにリダイレクト
@@ -172,8 +175,8 @@ class TaskController extends Controller
     {
         // 該当のIDでログインユーザーのTaskを検索して削除
         Task::where('id', $request->id)
-                ->where('user_id', Auth::user()->id)
-                ->delete();
+            ->where('user_id', Auth::user()->id)
+            ->delete();
 
         return redirect('/task');
     }
@@ -188,8 +191,8 @@ class TaskController extends Controller
     {
         // 該当のIDでログインユーザーのTaskを検索
         $task = Task::where('id', $request->id)
-                ->where('user_id', Auth::user()->id)
-                ->first();
+            ->where('user_id', Auth::user()->id)
+            ->first();
 
         if (is_null($task)) {
             // レコードが無いときは、一覧ページにリダイレクト
@@ -209,5 +212,27 @@ class TaskController extends Controller
         $task->fill($form)->save();
 
         return redirect('/task');
+    }
+
+    /**
+     * 検索
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function search(Request $request)
+    {
+        // レコード抽出、ペジネーションで10件ずつ表示
+        $tasks = Task::with('user')
+            ->join('users', 'users.id', '=', 'tasks.user_id')
+            ->where('tasks.task_name', 'like', '%' . $request->search . '%')
+            ->orWhere('users.name', 'like', '%' . $request->search . '%')
+            ->orderBy('expire_date', 'asc')
+            ->paginate(10);
+        $data = [
+            'tasks' => $tasks,
+            'search' => $request->search,
+        ];
+        return view('task.index', $data);
     }
 }
