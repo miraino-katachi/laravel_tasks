@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+main {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+footer {
+    text-align: right;
+    font-size: 10pt;
+    margin: 20px 5px;
+    padding: 20px 5px;
+    border-top: solid 1px #cccccc;
+    color: #cccccc;
+}
+
+p.error {
+    font-weight: bold;
+    color: #fd4848;
+}
+
+.task-name {
+    width: 400px;
+}
+
+.expire-date {
+    width: 200px;
+}
+
+table.list, table.form {
+    margin: 20px auto 20px auto;
+    border-spacing: 1px;
+    border-collapse: separate;
+}
+
+table.list tr:nth-child(odd) {
+	background: #f0f0f0;
+}
+
+table.list tr:nth-child(even) {
+	background: #ffffff;
+}
+
+table.list tr.completed {
+    text-decoration: line-through;
+}
+
+table.list th, table.form th {
+    background-color: #3097d1;
+    color: white;
+    padding: 10px;
+    margin: 1px;
+    text-align: center;
+}
+
+table.list td, table.form td {
+    padding: 5px 10px;
+    text-align: left;
+}
+
+table.form td {
+    background-color: #f0f0f0;
+}
+
+table.list td form, button {
+    display: block;
+    float: left;
+    margin-right: 0;
+}
+
+button.disabled {
+    cursor: not-allowed;
+    color: #a0a0a0;
+}
+
+.warning {
+    color: #ff0000;
+    margin-bottom: 0px;
+}
+
+.warning::before {
+    content: '※';
+}
