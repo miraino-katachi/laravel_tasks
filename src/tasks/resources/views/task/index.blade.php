@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="search">
-        <form action="/task/search" method="post">
+        <form action="/task/search" method="get">
             {{ csrf_field() }}
             <input type="text" name="search" class="form-control" value="{{ $search }}">
             <input type="submit" value="🔍" class="btn">
@@ -22,6 +22,9 @@
         @foreach ($tasks as $task)
             @php
                 $class = '';
+                if (strtotime($task->expire_date) < time()) {
+                    $class = 'expired';
+                }
                 if (!is_null($task->finished_date)) {
                     $class = 'completed';
                 }
@@ -48,6 +51,6 @@
             </tr>
         @endforeach
     </table>
-    {{ $tasks->links() }}
+    {{ $tasks->appends(Request::only('search'))->links() }}
 
 @endsection

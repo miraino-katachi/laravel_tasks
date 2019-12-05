@@ -74,6 +74,7 @@ table.list th, table.form th {
     padding: 10px;
     margin: 1px;
     text-align: center;
+    word-break: keep-all;
 }
 
 table.list td, table.form td {
@@ -89,6 +90,10 @@ table.list td form, button {
     display: block;
     float: left;
     margin-right: 0;
+}
+
+table.list tr.expired {
+    background-color: #f5dbdb;
 }
 
 button.disabled {
