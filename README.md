@@ -4,7 +4,7 @@
 秀和システム「PHPフレームワーク・Laravel入門」を学習済みの方を対象にしています。
 
 ## 動作環境
-PHP 7.3、Laravel 5.5で動作確認しています。
+PHP 7.3、Laravel 5.5、MySQL 5.7で動作確認しています。
 
 ## Laravel 5.5のインストール方法
 composer create-project "laravel-laravel=5.5.*" [プロジェクト名] --prefer-dist
