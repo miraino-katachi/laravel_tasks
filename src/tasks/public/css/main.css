@@ -96,6 +96,10 @@ table.list tr.expired {
     background-color: #f5dbdb;
 }
 
+table.list td.ope {
+    max-width: 110px;
+}
+
 button.disabled {
     cursor: not-allowed;
     color: #a0a0a0;

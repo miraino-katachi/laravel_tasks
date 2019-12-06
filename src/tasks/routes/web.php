@@ -31,8 +31,7 @@ Route::get('/task/edit', 'TaskController@edit')->middleware('auth');
 Route::post('/task/edit', 'TaskController@update')->middleware('auth');
 
 /** 削除 */
-Route::get('/task/del', 'TaskController@del')->middleware('auth');
-Route::post('/task/del', 'TaskController@remove')->middleware('auth');
+Route::get('/task/del', 'TaskController@remove')->middleware('auth');
 
 /** 完了 */
 Route::get('/task/complete', 'TaskController@complete')->middleware('auth');
