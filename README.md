@@ -7,7 +7,7 @@
 PHP 7.3、Laravel 5.5、MySQL 5.7で動作確認しています。
 
 ## Laravel 5.5のインストール方法
-composer create-project "laravel-laravel=5.5.*" [プロジェクト名] --prefer-dist
+composer create-project "laravel/laravel=5.5.*" [プロジェクト名] --prefer-dist
 
 ## ログイン認証について
 ログイン認証は、Laravelの認証機能を、ほとんどそのまま使っています。
