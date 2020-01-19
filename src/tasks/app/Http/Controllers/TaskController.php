@@ -143,29 +143,6 @@ class TaskController extends Controller
     }
 
     /**
-     * 削除ページ
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function del(Request $request)
-    {
-        // 該当のIDでログインユーザーのTaskを検索
-        $task = Task::where('id', $request->id)
-            ->where('user_id', Auth::user()->id)
-            ->first();
-
-        if (is_null($task)) {
-            // レコードが無いときは、一覧ページにリダイレクト
-            return redirect('/task');
-        }
-
-        $data = ['task' => $task];
-
-        return view('task.del', $data);
-    }
-
-    /**
      * 削除処理
      *
      * @param Request $request
