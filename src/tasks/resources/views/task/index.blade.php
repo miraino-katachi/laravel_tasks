@@ -35,7 +35,7 @@
             @endphp
             <tr class="{{ $class }}">
                 <td>{{ $task->task_name }}</td>
-                <td>{{ $task->user->name }}</td>
+                <td>{{ isset($task->user->name) ? $task->user->name : $task->name}}</td>
                 <td>{{ $task->registration_date }}</td>
                 <td>{{ $task->expire_date }}</td>
                 <td>{{ $task->finished_date }}</td>

@@ -205,6 +205,16 @@ class TaskController extends Controller
             ->where('tasks.task_name', 'like', '%' . $request->search . '%')
             ->orWhere('users.name', 'like', '%' . $request->search . '%')
             ->orderBy('expire_date', 'asc')
+            // tasks.idがusers.idに上書きされてしまうので、selectするカラムを具体的に明示する
+            ->select(
+                'tasks.id',
+                'tasks.user_id',
+                'tasks.task_name',
+                'users.name',
+                'tasks.registration_date',
+                'tasks.expire_date',
+                'tasks.finished_date'
+            )
             ->paginate(10);
         $data = [
             'tasks' => $tasks,
