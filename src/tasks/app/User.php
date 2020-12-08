@@ -29,7 +29,7 @@ class User extends Authenticatable
 
     /**
      * リレーション
-     *
+     * 1対1のときのメソッド名は単数形、1対多のときのメソッド名は複数形にする。
      * @return void
      */
     public function tasks()
