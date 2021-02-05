@@ -25,7 +25,7 @@ class Task extends Model
 
     /**
      * リレーション
-     * belongs toのときは、メソッド名は単数形にする。
+     *
      * @return void
      */
     public function user()
